@@ -1,8 +1,8 @@
 import os
-import threading
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import subprocess
 import sys
+import threading
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 # Lê a porta que o Render atribui dinamicamente (padrão 10000)
 PORT = int(os.environ.get("PORT", 10000))
@@ -21,7 +21,8 @@ class HealthCheckHandler(BaseHTTPRequestHandler):
 def iniciar_bot():
     """Inicia o loop principal do bot de ofertas em segundo plano."""
     print("🚀 Iniciando o bot de ofertas em segundo plano...")
-    subprocess.run([sys.executable, "-m", "ofertas"])
+    # Aponta diretamente para o main.py dentro da pasta ofertas
+    subprocess.run([sys.executable, "-m", "ofertas.main"])
 
 if __name__ == "__main__":
     # 1. Inicia o bot numa thread separada
