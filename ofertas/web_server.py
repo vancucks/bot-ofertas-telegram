@@ -22,9 +22,9 @@ class HealthCheckHandler(BaseHTTPRequestHandler):
 
 def iniciar_bot():
     print("🚀 Iniciando o bot de ofertas em segundo plano...", flush=True)
-    # Executa o bot forçando a saída de logs para o terminal (sys.stdout / sys.stderr)
+    # Executa o bot usando o comando correto 'ofertas run'
     subprocess.run(
-        [sys.executable, "-u", "-m", "ofertas.main"],
+        [sys.executable, "-u", "-m", "ofertas", "run"],
         stdout=sys.stdout,
         stderr=sys.stderr
     )
